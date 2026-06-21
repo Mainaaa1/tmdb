@@ -104,6 +104,10 @@ export function MovieDetailClient({ movieId, initialMovie }: MovieDetailClientPr
     );
   }
 
+  if (!movie) {
+    return null;
+  }
+
   const poster = posterSrc(movie.posterPath, 'w780');
   const backdrop = backdropSrc(movie.backdropPath);
   const similarMovies = similarQuery.data?.results ?? [];
