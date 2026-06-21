@@ -199,7 +199,7 @@ export function DashboardClient({ initialQuery, initialPage }: DashboardClientPr
                     <div className="h-[90px] bg-gradient-to-br from-[#E50914]/30 via-black to-black">
                       {movie.posterPath ? (
                         <div className="relative h-full w-full">
-                          <Image src={posterSrc(movie.posterPath)} alt={movie.title} fill className="object-cover opacity-90" sizes="180px" />
+                          <Image src={posterSrc(movie.posterPath)!} alt={movie.title} fill className="object-cover opacity-90" sizes="180px" />
                         </div>
                       ) : (
                         <div className="flex h-full items-center justify-center">
