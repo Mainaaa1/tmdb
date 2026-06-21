@@ -67,11 +67,6 @@ export function LoginForm() {
       </CardHeader>
 
       <CardContent className="space-y-5 pt-6">
-        <Alert className="border-white/10 bg-white/[0.03] text-white">
-          <div className="flex items-start gap-3">
-            <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-[#E50914]" />
-          </div>
-        </Alert>
 
         <Tabs defaultValue="signin" className="w-full">
           <TabsList className="grid w-full grid-cols-2 rounded-xl bg-white/6 p-1">
