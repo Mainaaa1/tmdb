@@ -4,9 +4,9 @@ import { LoginForm } from '@/components/auth/login-form';
 import { getSessionFromCookieHeader } from '@/lib/auth';
 
 type LoginPageProps = {
-  searchParams?: {
+  searchParams?: Promise<{
     from?: string;
-  };
+  }>;
 };
 
 export default async function LoginPage({ searchParams }: LoginPageProps) {
@@ -16,9 +16,10 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
     .map(({ name, value }) => `${name}=${value}`)
     .join('; ');
   const session = await getSessionFromCookieHeader(cookieHeader);
+  const resolvedSearchParams = await searchParams;
 
   if (session) {
-    redirect(searchParams?.from ?? '/dashboard');
+    redirect(resolvedSearchParams?.from ?? '/dashboard');
   }
 
   return (
