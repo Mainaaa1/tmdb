@@ -70,12 +70,6 @@ export function LoginForm() {
         <Alert className="border-white/10 bg-white/[0.03] text-white">
           <div className="flex items-start gap-3">
             <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-[#E50914]" />
-            <div>
-              <AlertTitle className="text-sm text-white">Account data is stored locally</AlertTitle>
-              <AlertDescription className="text-white/60">
-                Passwords are hashed with scrypt and sessions are stored as signed, HttpOnly cookies.
-              </AlertDescription>
-            </div>
           </div>
         </Alert>
 
