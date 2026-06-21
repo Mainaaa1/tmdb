@@ -25,18 +25,6 @@ export function LoginForm() {
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
 
-  function hasSessionCookie() {
-    return document.cookie.split(';').some((cookie) => cookie.trim().startsWith('filamu_session='));
-  }
-
-  async function waitForSessionCookie(timeout = 1000) {
-    const start = Date.now();
-    while (!hasSessionCookie() && Date.now() - start < timeout) {
-      await new Promise((resolve) => setTimeout(resolve, 50));
-    }
-    return hasSessionCookie();
-  }
-
   async function handleSignIn(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setPending(true);
@@ -44,10 +32,6 @@ export function LoginForm() {
 
     try {
       await login(signInIdentifier, signInPassword);
-      const cookieSet = await waitForSessionCookie(1500);
-      if (!cookieSet) {
-        throw new Error('Unable to establish session cookie. Try again.');
-      }
       window.location.assign(returnTo);
     } catch (submitError) {
       setError(submitError instanceof Error ? submitError.message : 'Unable to sign in.');
